@@ -38,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.PasswordtextBox2 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.ErrorLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label5
@@ -45,7 +46,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.ForeColor = System.Drawing.Color.Cyan;
-            this.label5.Location = new System.Drawing.Point(360, 439);
+            this.label5.Location = new System.Drawing.Point(391, 447);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 20);
             this.label5.TabIndex = 15;
@@ -56,7 +57,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(184, 439);
+            this.label4.Location = new System.Drawing.Point(215, 447);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(166, 20);
             this.label4.TabIndex = 14;
@@ -115,9 +116,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(202, 149);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(252, 20);
+            this.label2.Size = new System.Drawing.Size(136, 20);
             this.label2.TabIndex = 9;
-            this.label2.Text = "Введите почту или телефон";
+            this.label2.Text = "Введите логин";
             // 
             // label1
             // 
@@ -149,12 +150,22 @@
             this.label6.TabIndex = 16;
             this.label6.Text = "Повторите пароль";
             // 
+            // ErrorLabel
+            // 
+            this.ErrorLabel.AutoSize = true;
+            this.ErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.ErrorLabel.Location = new System.Drawing.Point(392, 153);
+            this.ErrorLabel.Name = "ErrorLabel";
+            this.ErrorLabel.Size = new System.Drawing.Size(0, 16);
+            this.ErrorLabel.TabIndex = 18;
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(682, 553);
+            this.Controls.Add(this.ErrorLabel);
             this.Controls.Add(this.PasswordtextBox2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -187,5 +198,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox PasswordtextBox2;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label ErrorLabel;
     }
 }

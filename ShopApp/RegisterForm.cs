@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,14 @@ namespace ShopApp
 {
     public partial class RegisterForm : Form
     {
+        Pen RedPen = new Pen(Color.Red);
+        Pen GrayPen = new Pen(Color.Gray);
+        int variance = 3;
         public RegisterForm()
         {
             InitializeComponent();
+            Pen p = new Pen(Color.Red);
+
         }
         private void RegisterForm_Load(object sender, EventArgs e)
         {
@@ -30,7 +36,7 @@ namespace ShopApp
             if (LogintextBox.Text == "Email/phone")
             {
                 LogintextBox.Text = "";
-                LogintextBox.ForeColor = Color.Black;
+                LogintextBox.ForeColor = Color.Gray;
             }
         }
 
@@ -45,58 +51,85 @@ namespace ShopApp
 
         private void PasswordtextBox_Enter(object sender, EventArgs e)
         {
-            if (LogintextBox.Text == "Email/phone")
+            if (PasswordtextBox.Text == "Password")
             {
-                LogintextBox.Text = "";
-                LogintextBox.ForeColor = Color.Black;
+                PasswordtextBox.Text = "";
+                PasswordtextBox.ForeColor = Color.Gray;
             }
         }
 
         private void PasswordtextBox_Leave(object sender, EventArgs e)
         {
-            if (LogintextBox.Text == "")
+            if (PasswordtextBox.Text == "")
             {
-                LogintextBox.Text = "Email/phone";
-                LogintextBox.ForeColor = Color.Gray;
+                PasswordtextBox.Text = "Password";
+                PasswordtextBox.ForeColor = Color.Gray;
             }
         }
 
         private void PasswordtextBox2_Enter(object sender, EventArgs e)
         {
-            if (LogintextBox.Text == "Email/phone")
+            if (PasswordtextBox2.Text == "Password")
             {
-                LogintextBox.Text = "";
-                LogintextBox.ForeColor = Color.Black;
+                PasswordtextBox2.Text = "";
+                PasswordtextBox2.ForeColor = Color.Gray;
             }
         }
 
         private void PasswordtextBox2_Leave(object sender, EventArgs e)
         {
-            if (LogintextBox.Text == "")
+            if (PasswordtextBox2.Text == "")
             {
-                LogintextBox.Text = "Email/phone";
-                LogintextBox.ForeColor = Color.Gray;
+                PasswordtextBox2.Text = "Password";
+                PasswordtextBox2.ForeColor = Color.Gray;
             }
         }
 
         private void LoginBtn_Click(object sender, EventArgs e)
         {
-            if (true)
-            {
-                LogintextBox.BorderStyle = BorderStyle.None;
-                Pen p = new Pen(Color.Red);
+            SqlConnection connection = new SqlConnection(Globals.connectionString);
+            string Insertq = "INSERT INTO dbo.[User] ([Login], [password]) VALUES (@Login, @password)";
+            string Selectq = "Select COUNT(id_user) FROM dbo.[User] Where [login] = @login";
+            SqlCommand Icmd = new SqlCommand(Insertq, connection);
+            SqlCommand Scmd = new SqlCommand(Selectq,connection);
+            connection.Open();
+            Scmd.Parameters.Add("@login", LogintextBox.Text);
+            if (int.Parse(Scmd.ExecuteScalar().ToString()) > 0) {
+                connection.Close();
+
                 Graphics g = this.CreateGraphics();
-                int variance = 3;
-                g.DrawRectangle(p, new Rectangle(LogintextBox.Location.X - variance, LogintextBox.Location.Y - variance, LogintextBox.Width + variance, LogintextBox.Height + variance));
+                LogintextBox.BorderStyle = BorderStyle.None;
+                g.DrawRectangle(RedPen, new Rectangle(LogintextBox.Location.X - variance, LogintextBox.Location.Y - variance, LogintextBox.Width + variance, LogintextBox.Height + variance));
                 LogintextBox.ForeColor = Color.Red;
+                ErrorLabel.Text = "Логин занят";
+
+            }
+            else if (PasswordtextBox.Text != PasswordtextBox2.Text)
+            {
+                connection.Close();
+
+                Graphics g = this.CreateGraphics();
+                LogintextBox.BorderStyle = BorderStyle.None;
+                g.DrawRectangle(GrayPen, new Rectangle(LogintextBox.Location.X - variance, LogintextBox.Location.Y - variance, LogintextBox.Width + variance, LogintextBox.Height + variance));
+                LogintextBox.ForeColor = Color.Gray;
 
                 PasswordtextBox.BorderStyle = BorderStyle.None;
-                g.DrawRectangle(p, new Rectangle(PasswordtextBox.Location.X - variance, PasswordtextBox.Location.Y - variance, PasswordtextBox.Width + variance, PasswordtextBox.Height + variance));
+                g.DrawRectangle(RedPen, new Rectangle(PasswordtextBox.Location.X - variance, PasswordtextBox.Location.Y - variance, PasswordtextBox.Width + variance, PasswordtextBox.Height + variance));
                 PasswordtextBox.ForeColor = Color.Red;
 
                 PasswordtextBox2.BorderStyle = BorderStyle.None;
-                g.DrawRectangle(p, new Rectangle(PasswordtextBox2.Location.X - variance, PasswordtextBox2.Location.Y - variance, PasswordtextBox2.Width + variance, PasswordtextBox2.Height + variance));
+                g.DrawRectangle(RedPen, new Rectangle(PasswordtextBox2.Location.X - variance, PasswordtextBox2.Location.Y - variance, PasswordtextBox2.Width + variance, PasswordtextBox2.Height + variance));
                 PasswordtextBox2.ForeColor = Color.Red;
+                ErrorLabel.Text = "Паролин не совпадают";
+            }
+            else
+            {
+                Icmd.Parameters.Add("@Login", LogintextBox.Text);
+                Icmd.Parameters.Add("@password", PasswordtextBox.Text);
+                Icmd.ExecuteNonQuery();
+
+                connection.Close();
+                this.Close();
             }
         }
 

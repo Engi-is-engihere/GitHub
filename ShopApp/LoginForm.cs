@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,9 +14,11 @@ namespace ShopApp
 {
     public partial class LoginForm : Form
     {
+        
         public LoginForm()
         {
             InitializeComponent();
+            
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
@@ -30,7 +33,7 @@ namespace ShopApp
             if (LogintextBox.Text == "Email/phone")
             {
                 LogintextBox.Text = "";
-                LogintextBox.ForeColor = Color.Black;
+                LogintextBox.ForeColor = Color.Gray;
             }
         }
         private void LogintextBox_Leave(object sender, EventArgs e)
@@ -46,7 +49,7 @@ namespace ShopApp
             if (PasswordtextBox.Text == "Password")
             {
                 PasswordtextBox.Text = "";
-                PasswordtextBox.ForeColor = Color.Black;
+                PasswordtextBox.ForeColor = Color.Gray;
             }
         }
 
@@ -60,7 +63,15 @@ namespace ShopApp
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            if (true) {
+
+            SqlConnection connection = new SqlConnection(Globals.connectionString);
+            string Selectq = "Select COUNT(id_user) FROM dbo.[User] Where [login] = @login and [password] = @password";
+            SqlCommand cmd = new SqlCommand(Selectq, connection);
+            cmd.Parameters.Add(new SqlParameter("@login", LogintextBox.Text));
+            cmd.Parameters.Add(new SqlParameter("@password", PasswordtextBox.Text));
+            connection.Open();
+            
+            if (int.Parse(cmd.ExecuteScalar().ToString()) == 0) {
                 LogintextBox.BorderStyle = BorderStyle.None;
                 Pen p = new Pen(Color.Red);
                 Graphics g = this.CreateGraphics();
@@ -71,6 +82,20 @@ namespace ShopApp
                 PasswordtextBox.BorderStyle = BorderStyle.None;
                 g.DrawRectangle(p, new Rectangle(PasswordtextBox.Location.X - variance, PasswordtextBox.Location.Y - variance, PasswordtextBox.Width + variance, PasswordtextBox.Height + variance));
                 PasswordtextBox.ForeColor = Color.Red;
+                connection.Close();
+            }
+            else{
+                connection.Close();
+
+                this.Hide();
+                ProductForm productForm = new ProductForm();
+                productForm.ShowDialog();
+                productForm = new ProductForm();
+
+
+                Show();
+                LogintextBox.ForeColor = Color.Gray;
+                PasswordtextBox.ForeColor = Color.Gray;
             }
         }
         private void label5_Click(object sender, EventArgs e)

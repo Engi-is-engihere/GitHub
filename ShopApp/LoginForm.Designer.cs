@@ -56,9 +56,9 @@ namespace ShopApp
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(202, 159);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(252, 20);
+            this.label2.Size = new System.Drawing.Size(136, 20);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Введите почту или телефон";
+            this.label2.Text = "Введите логин";
             // 
             // label3
             // 
@@ -72,7 +72,7 @@ namespace ShopApp
             // 
             // LogintextBox
             // 
-            this.LogintextBox.Cursor = System.Windows.Forms.Cursors.No;
+            this.LogintextBox.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.LogintextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LogintextBox.Location = new System.Drawing.Point(206, 194);
             this.LogintextBox.Name = "LogintextBox";

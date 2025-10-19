@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "D:\\GitHub\\ShopApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|d:\\github\\shopapp\\productform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|solutionrelative:productform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|d:\\github\\shopapp\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|solutionrelative:loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|d:\\github\\shopapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|d:\\github\\shopapp\\productform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|solutionrelative:productform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|D:\\GitHub\\ShopApp\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|d:\\github\\shopapp\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|solutionrelative:registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|d:\\github\\shopapp\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|solutionrelative:registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|d:\\github\\shopapp\\globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|solutionrelative:globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -29,60 +29,59 @@
           "SelectedChildIndex": 3,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "RegisterForm.cs",
-              "DocumentMoniker": "D:\\GitHub\\ShopApp\\RegisterForm.cs",
-              "RelativeDocumentMoniker": "RegisterForm.cs",
-              "ToolTip": "D:\\GitHub\\ShopApp\\RegisterForm.cs",
-              "RelativeToolTip": "RegisterForm.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAqwGkAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-16T17:25:08.188Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\GitHub\\ShopApp\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\GitHub\\ShopApp\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAnAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "RegisterForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\GitHub\\ShopApp\\RegisterForm.cs",
+              "RelativeDocumentMoniker": "RegisterForm.cs",
+              "ToolTip": "D:\\GitHub\\ShopApp\\RegisterForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "RegisterForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T20:06:11.633Z",
+              "WhenOpened": "2025-10-19T19:02:36.026Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RegisterForm.cs",
+              "DocumentMoniker": "D:\\GitHub\\ShopApp\\RegisterForm.cs",
+              "RelativeDocumentMoniker": "RegisterForm.cs",
+              "ToolTip": "D:\\GitHub\\ShopApp\\RegisterForm.cs",
+              "RelativeToolTip": "RegisterForm.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAYwFoAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-19T18:44:06.079Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ProductForm.cs",
-              "DocumentMoniker": "D:\\GitHub\\ShopApp\\ProductForm.cs",
-              "RelativeDocumentMoniker": "ProductForm.cs",
-              "ToolTip": "D:\\GitHub\\ShopApp\\ProductForm.cs",
-              "RelativeToolTip": "ProductForm.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAkwEgAAAAhAAAAAAAAAA==",
+              "Title": "LoginForm.cs",
+              "DocumentMoniker": "D:\\GitHub\\ShopApp\\LoginForm.cs",
+              "RelativeDocumentMoniker": "LoginForm.cs",
+              "ToolTip": "D:\\GitHub\\ShopApp\\LoginForm.cs",
+              "RelativeToolTip": "LoginForm.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAswEgAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T19:49:34.303Z",
+              "WhenOpened": "2025-10-19T17:58:33.101Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ProductForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "D:\\GitHub\\ShopApp\\ProductForm.cs",
-              "RelativeDocumentMoniker": "ProductForm.cs",
-              "ToolTip": "D:\\GitHub\\ShopApp\\ProductForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "ProductForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentIndex": 3,
+              "Title": "Globals.cs",
+              "DocumentMoniker": "D:\\GitHub\\ShopApp\\Globals.cs",
+              "RelativeDocumentMoniker": "Globals.cs",
+              "ToolTip": "D:\\GitHub\\ShopApp\\Globals.cs",
+              "RelativeToolTip": "Globals.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T19:30:25.484Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "WhenOpened": "2025-10-19T18:17:48.847Z",
+              "EditorCaption": ""
             }
           ]
         },
