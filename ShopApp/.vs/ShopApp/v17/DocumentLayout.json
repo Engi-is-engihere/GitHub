@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "D:\\GitHub\\ShopApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|d:\\github\\shopapp\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|solutionrelative:loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|d:\\github\\shopapp\\createorderform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|solutionrelative:createorderform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|d:\\github\\shopapp\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|solutionrelative:registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|d:\\github\\shopapp\\productform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|solutionrelative:productform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|d:\\github\\shopapp\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|solutionrelative:registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|d:\\github\\shopapp\\productform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|solutionrelative:productform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|d:\\github\\shopapp\\globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|solutionrelative:globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|d:\\github\\shopapp\\createorderform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6DF0DD59-B577-4731-AB81-B19DEE33ECD4}|ShopApp.csproj|solutionrelative:createorderform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,53 +34,52 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RegisterForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "D:\\GitHub\\ShopApp\\RegisterForm.cs",
-              "RelativeDocumentMoniker": "RegisterForm.cs",
-              "ToolTip": "D:\\GitHub\\ShopApp\\RegisterForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "RegisterForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentIndex": 0,
+              "Title": "CreateOrderForm.cs",
+              "DocumentMoniker": "D:\\GitHub\\ShopApp\\CreateOrderForm.cs",
+              "RelativeDocumentMoniker": "CreateOrderForm.cs",
+              "ToolTip": "D:\\GitHub\\ShopApp\\CreateOrderForm.cs",
+              "RelativeToolTip": "CreateOrderForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-19T19:02:36.026Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "WhenOpened": "2025-10-21T22:25:36.002Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "RegisterForm.cs",
-              "DocumentMoniker": "D:\\GitHub\\ShopApp\\RegisterForm.cs",
-              "RelativeDocumentMoniker": "RegisterForm.cs",
-              "ToolTip": "D:\\GitHub\\ShopApp\\RegisterForm.cs",
-              "RelativeToolTip": "RegisterForm.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAYwFoAAAA/AAAAAAAAAA==",
+              "Title": "ProductForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\GitHub\\ShopApp\\ProductForm.cs",
+              "RelativeDocumentMoniker": "ProductForm.cs",
+              "ToolTip": "D:\\GitHub\\ShopApp\\ProductForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "ProductForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-19T18:44:06.079Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "LoginForm.cs",
-              "DocumentMoniker": "D:\\GitHub\\ShopApp\\LoginForm.cs",
-              "RelativeDocumentMoniker": "LoginForm.cs",
-              "ToolTip": "D:\\GitHub\\ShopApp\\LoginForm.cs",
-              "RelativeToolTip": "LoginForm.cs",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAswEgAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-19T17:58:33.101Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-21T22:03:46.322Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Globals.cs",
-              "DocumentMoniker": "D:\\GitHub\\ShopApp\\Globals.cs",
-              "RelativeDocumentMoniker": "Globals.cs",
-              "ToolTip": "D:\\GitHub\\ShopApp\\Globals.cs",
-              "RelativeToolTip": "Globals.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAmAAAAAAAAAA==",
+              "Title": "CreateOrderForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\GitHub\\ShopApp\\CreateOrderForm.cs",
+              "RelativeDocumentMoniker": "CreateOrderForm.cs",
+              "ToolTip": "D:\\GitHub\\ShopApp\\CreateOrderForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "CreateOrderForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-19T18:17:48.847Z",
+              "WhenOpened": "2025-10-21T22:03:15.631Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductForm.cs",
+              "DocumentMoniker": "D:\\GitHub\\ShopApp\\ProductForm.cs",
+              "RelativeDocumentMoniker": "ProductForm.cs",
+              "ToolTip": "D:\\GitHub\\ShopApp\\ProductForm.cs",
+              "RelativeToolTip": "ProductForm.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAASwHwAAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T21:02:04.032Z",
               "EditorCaption": ""
             }
           ]

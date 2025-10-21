@@ -9,6 +9,6 @@ namespace ShopApp
     public static class Globals
     {
          public readonly static string connectionString = @"Server=MSI\MSSQLSERVERСOLL;Database=OnlineClothingStore;Integrated Security=True;";
-        
+         public  static int id_user = -1;
     }
 }

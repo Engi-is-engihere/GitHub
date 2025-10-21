@@ -66,7 +66,9 @@ namespace ShopApp
 
             SqlConnection connection = new SqlConnection(Globals.connectionString);
             string Selectq = "Select COUNT(id_user) FROM dbo.[User] Where [login] = @login and [password] = @password";
+            string Selectid = "Select id_user FROM dbo.[User] Where [login] = @login and [password] = @password";
             SqlCommand cmd = new SqlCommand(Selectq, connection);
+            
             cmd.Parameters.Add(new SqlParameter("@login", LogintextBox.Text));
             cmd.Parameters.Add(new SqlParameter("@password", PasswordtextBox.Text));
             connection.Open();
@@ -85,6 +87,10 @@ namespace ShopApp
                 connection.Close();
             }
             else{
+                SqlCommand cmdid = new SqlCommand(Selectid, connection);
+                cmdid.Parameters.Add(new SqlParameter("@login", LogintextBox.Text));
+                cmdid.Parameters.Add(new SqlParameter("@password", PasswordtextBox.Text));
+                Globals.id_user = int.Parse(cmdid.ExecuteReader().GetValue(0).ToString());
                 connection.Close();
 
                 this.Hide();
