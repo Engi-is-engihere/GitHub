@@ -37,7 +37,7 @@ namespace ShopApp
                         int id = sqlData.GetInt32(0);
                         string name = sqlData.GetString(1);
                         decimal price = sqlData.GetDecimal(2);
-                        string description = sqlData.GetString(4);
+                        string description = sqlData.GetString(5);
 
                         GroupBox groupBox = new GroupBox();
                         groupBox.Width = 200;
@@ -55,6 +55,7 @@ namespace ShopApp
 
                         Label labelId = new Label();
                         labelId.Text = id.ToString();
+                        labelId.Visible = false;
 
                         Label labelName = new Label();
                         labelName.Text = "Название товара";
@@ -122,7 +123,7 @@ namespace ShopApp
             }
         }
         private void btnOrder_Click(object sender, EventArgs e,int id_product) {
-            CreateOrderForm createOrderForm = new CreateOrderForm(Globals.id_user,id_product);
+            CreateOrderForm createOrderForm = new CreateOrderForm(id_product);
             createOrderForm.ShowDialog();
             createOrderForm = null;
         }
@@ -133,6 +134,7 @@ namespace ShopApp
 
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
+            ProductPanel.Controls.Clear();
             UpdateProduct();
         }
     }

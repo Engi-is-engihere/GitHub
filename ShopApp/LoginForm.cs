@@ -67,6 +67,7 @@ namespace ShopApp
             SqlConnection connection = new SqlConnection(Globals.connectionString);
             string Selectq = "Select COUNT(id_user) FROM dbo.[User] Where [login] = @login and [password] = @password";
             string Selectid = "Select id_user FROM dbo.[User] Where [login] = @login and [password] = @password";
+            string Selectrole = "Select id_Role From [User] Where [id_user] = @id_user";
             SqlCommand cmd = new SqlCommand(Selectq, connection);
             
             cmd.Parameters.Add(new SqlParameter("@login", LogintextBox.Text));
@@ -90,16 +91,38 @@ namespace ShopApp
                 SqlCommand cmdid = new SqlCommand(Selectid, connection);
                 cmdid.Parameters.Add(new SqlParameter("@login", LogintextBox.Text));
                 cmdid.Parameters.Add(new SqlParameter("@password", PasswordtextBox.Text));
-                Globals.id_user = int.Parse(cmdid.ExecuteReader().GetValue(0).ToString());
+
+                SqlDataReader sqlData = cmdid.ExecuteReader();
+                sqlData.Read();
+                Globals.id_user = sqlData.GetInt32(0);
+                sqlData.Close();
+
+                SqlCommand cmdroleId = new SqlCommand(Selectrole,connection);
+                cmdroleId.Parameters.Add(new SqlParameter("@id_user", Globals.id_user));
+
+                
+                sqlData = cmdroleId.ExecuteReader();
+                sqlData.Read();
+                Globals.id_role = sqlData.GetInt32(0);
+                sqlData.Close();
+                
                 connection.Close();
 
                 this.Hide();
-                ProductForm productForm = new ProductForm();
-                productForm.ShowDialog();
-                productForm = new ProductForm();
+                if (Globals.id_role == 1)
+                {
+                    ProductForm productForm = new ProductForm();
+                    productForm.ShowDialog();
+                    productForm.Close();
+                }
+                else if (Globals.id_role == 2)
+                {
+                    AdminForm adminForm = new AdminForm();
+                    adminForm.ShowDialog();
+                    adminForm.Close();
+                }
 
-
-                Show();
+                    Show();
                 LogintextBox.ForeColor = Color.Gray;
                 PasswordtextBox.ForeColor = Color.Gray;
             }

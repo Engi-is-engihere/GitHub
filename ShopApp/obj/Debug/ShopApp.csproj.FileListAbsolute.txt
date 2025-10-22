@@ -24,3 +24,5 @@ D:\GitHub\ShopApp\obj\Debug\ShopApp.csproj.CoreCompileInputs.cache
 D:\GitHub\ShopApp\obj\Debug\ShopApp.exe
 D:\GitHub\ShopApp\obj\Debug\ShopApp.pdb
 D:\GitHub\ShopApp\obj\Debug\ShopApp.CreateOrderForm.resources
+D:\GitHub\ShopApp\obj\Debug\ShopApp.AdminForm.resources
+D:\GitHub\ShopApp\obj\Debug\ShopApp.UsersForm.resources

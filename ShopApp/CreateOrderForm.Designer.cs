@@ -37,6 +37,7 @@
             this.CountProductNumeric = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.errorlabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.CountProductNumeric)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,15 +67,19 @@
             // 
             this.textBoxAdres.Location = new System.Drawing.Point(380, 266);
             this.textBoxAdres.Name = "textBoxAdres";
-            this.textBoxAdres.Size = new System.Drawing.Size(173, 22);
+            this.textBoxAdres.Size = new System.Drawing.Size(231, 22);
             this.textBoxAdres.TabIndex = 5;
             // 
             // comboBoxTypePay
             // 
             this.comboBoxTypePay.FormattingEnabled = true;
+            this.comboBoxTypePay.Items.AddRange(new object[] {
+            "Оплата картой",
+            "Оплата по номеру телефона",
+            "Оплата при получении"});
             this.comboBoxTypePay.Location = new System.Drawing.Point(379, 202);
             this.comboBoxTypePay.Name = "comboBoxTypePay";
-            this.comboBoxTypePay.Size = new System.Drawing.Size(174, 24);
+            this.comboBoxTypePay.Size = new System.Drawing.Size(232, 24);
             this.comboBoxTypePay.TabIndex = 6;
             // 
             // btnOk
@@ -107,7 +112,7 @@
             // 
             this.CountProductNumeric.Location = new System.Drawing.Point(379, 138);
             this.CountProductNumeric.Name = "CountProductNumeric";
-            this.CountProductNumeric.Size = new System.Drawing.Size(174, 22);
+            this.CountProductNumeric.Size = new System.Drawing.Size(232, 22);
             this.CountProductNumeric.TabIndex = 9;
             // 
             // label1
@@ -129,13 +134,22 @@
             this.label3.Size = new System.Drawing.Size(193, 29);
             this.label3.TabIndex = 11;
             this.label3.Text = "Адрес доставки";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // errorlabel
+            // 
+            this.errorlabel.AutoSize = true;
+            this.errorlabel.ForeColor = System.Drawing.Color.Red;
+            this.errorlabel.Location = new System.Drawing.Point(142, 408);
+            this.errorlabel.Name = "errorlabel";
+            this.errorlabel.Size = new System.Drawing.Size(0, 16);
+            this.errorlabel.TabIndex = 12;
             // 
             // CreateOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(722, 503);
+            this.Controls.Add(this.errorlabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CountProductNumeric);
@@ -166,5 +180,6 @@
         private System.Windows.Forms.NumericUpDown CountProductNumeric;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label errorlabel;
     }
 }

@@ -88,7 +88,7 @@ namespace ShopApp
         private void LoginBtn_Click(object sender, EventArgs e)
         {
             SqlConnection connection = new SqlConnection(Globals.connectionString);
-            string Insertq = "INSERT INTO dbo.[User] ([Login], [password]) VALUES (@Login, @password)";
+            string Insertq = "INSERT INTO dbo.[User] ([Login], [password], [id_Role]) VALUES (@Login, @password, @id_Role)";
             string Selectq = "Select COUNT(id_user) FROM dbo.[User] Where [login] = @login";
             SqlCommand Icmd = new SqlCommand(Insertq, connection);
             SqlCommand Scmd = new SqlCommand(Selectq,connection);
@@ -126,6 +126,7 @@ namespace ShopApp
             {
                 Icmd.Parameters.Add("@Login", LogintextBox.Text);
                 Icmd.Parameters.Add("@password", PasswordtextBox.Text);
+                Icmd.Parameters.Add("@id_Role", 1);
                 Icmd.ExecuteNonQuery();
 
                 connection.Close();
