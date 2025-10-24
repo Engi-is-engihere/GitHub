@@ -1,24 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ShopApp
 {
     public partial class LoginForm : Form
     {
-        
+
         public LoginForm()
         {
             InitializeComponent();
-            
+
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
@@ -68,13 +61,15 @@ namespace ShopApp
             string Selectq = "Select COUNT(id_user) FROM dbo.[User] Where [login] = @login and [password] = @password";
             string Selectid = "Select id_user FROM dbo.[User] Where [login] = @login and [password] = @password";
             string Selectrole = "Select id_Role From [User] Where [id_user] = @id_user";
+            string selectIdBasket = "Select id_basket FROM Basket WHERE id_user = @id_user ";
+           
             SqlCommand cmd = new SqlCommand(Selectq, connection);
-            
             cmd.Parameters.Add(new SqlParameter("@login", LogintextBox.Text));
             cmd.Parameters.Add(new SqlParameter("@password", PasswordtextBox.Text));
             connection.Open();
-            
-            if (int.Parse(cmd.ExecuteScalar().ToString()) == 0) {
+
+            if (int.Parse(cmd.ExecuteScalar().ToString()) == 0)
+            {
                 LogintextBox.BorderStyle = BorderStyle.None;
                 Pen p = new Pen(Color.Red);
                 Graphics g = this.CreateGraphics();
@@ -87,7 +82,8 @@ namespace ShopApp
                 PasswordtextBox.ForeColor = Color.Red;
                 connection.Close();
             }
-            else{
+            else
+            {
                 SqlCommand cmdid = new SqlCommand(Selectid, connection);
                 cmdid.Parameters.Add(new SqlParameter("@login", LogintextBox.Text));
                 cmdid.Parameters.Add(new SqlParameter("@password", PasswordtextBox.Text));
@@ -97,15 +93,23 @@ namespace ShopApp
                 Globals.id_user = sqlData.GetInt32(0);
                 sqlData.Close();
 
-                SqlCommand cmdroleId = new SqlCommand(Selectrole,connection);
+                SqlCommand cmdroleId = new SqlCommand(Selectrole, connection);
                 cmdroleId.Parameters.Add(new SqlParameter("@id_user", Globals.id_user));
 
                 
+
                 sqlData = cmdroleId.ExecuteReader();
                 sqlData.Read();
                 Globals.id_role = sqlData.GetInt32(0);
                 sqlData.Close();
-                
+
+                SqlCommand cmdidBasket = new SqlCommand(selectIdBasket, connection);
+                cmdidBasket.Parameters.Add(new SqlParameter("@id_user", Globals.id_user));
+                sqlData = cmdidBasket.ExecuteReader();
+                sqlData.Read();
+                Globals.id_basket = sqlData.GetInt32(0);
+                sqlData.Close();
+
                 connection.Close();
 
                 this.Hide();
@@ -122,7 +126,7 @@ namespace ShopApp
                     adminForm.Close();
                 }
 
-                    Show();
+                Show();
                 LogintextBox.ForeColor = Color.Gray;
                 PasswordtextBox.ForeColor = Color.Gray;
             }
@@ -134,9 +138,9 @@ namespace ShopApp
             registerForm.ShowDialog();
             registerForm = null;
             Show();
-           
+
         }
 
-       
+
     }
 }

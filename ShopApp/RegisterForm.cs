@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ShopApp
@@ -91,10 +85,11 @@ namespace ShopApp
             string Insertq = "INSERT INTO dbo.[User] ([Login], [password], [id_Role]) VALUES (@Login, @password, @id_Role)";
             string Selectq = "Select COUNT(id_user) FROM dbo.[User] Where [login] = @login";
             SqlCommand Icmd = new SqlCommand(Insertq, connection);
-            SqlCommand Scmd = new SqlCommand(Selectq,connection);
+            SqlCommand Scmd = new SqlCommand(Selectq, connection);
             connection.Open();
             Scmd.Parameters.Add("@login", LogintextBox.Text);
-            if (int.Parse(Scmd.ExecuteScalar().ToString()) > 0) {
+            if (int.Parse(Scmd.ExecuteScalar().ToString()) > 0)
+            {
                 connection.Close();
 
                 Graphics g = this.CreateGraphics();

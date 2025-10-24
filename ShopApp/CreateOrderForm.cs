@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ShopApp
@@ -19,11 +12,11 @@ namespace ShopApp
         {
             InitializeComponent();
             idProduct = id_product;
-       
-            
+
+
         }
 
-        
+
 
         private void btnOk_Click(object sender, EventArgs e)
         {
@@ -47,13 +40,14 @@ namespace ShopApp
                 cmdZP.Parameters.Add("@id_product", idProduct);
                 cmdZP.Parameters.Add("@id_zakaz", idZakaz);
                 cmdZP.Parameters.Add("@quantity", CountProductNumeric.Value);
-               
+
                 cmdZP.ExecuteNonQuery();
 
                 connection.Close();
                 this.Close();
             }
-            else {
+            else
+            {
                 errorlabel.Text = "Введите все данные";
             }
 

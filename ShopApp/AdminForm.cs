@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ShopApp
@@ -35,17 +28,17 @@ namespace ShopApp
         }
         private void пользователиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new UsersForm(), sender);
+            OpenChildForm(new Forms.UsersForm(), sender);
         }
 
         private void заказыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new Forms.CustomersForm(), sender);
+            OpenChildForm(new Forms.OrdersForm(), sender);
         }
 
         private void товарыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new Forms.CustomersForm(), sender);
+            OpenChildForm(new Forms.ProductsForm(), sender);
         }
     }
 }

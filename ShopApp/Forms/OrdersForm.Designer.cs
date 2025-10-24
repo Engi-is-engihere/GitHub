@@ -1,6 +1,6 @@
-﻿namespace ShopApp
+﻿namespace ShopApp.Forms
 {
-    partial class UsersForm
+    partial class OrdersForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,24 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.DGV = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.ExportButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
-            this.DGV = new System.Windows.Forms.DataGridView();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // DGV
+            // 
+            this.DGV.AllowUserToAddRows = false;
+            this.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DGV.Location = new System.Drawing.Point(191, 0);
+            this.DGV.Name = "DGV";
+            this.DGV.RowHeadersWidth = 51;
+            this.DGV.RowTemplate.Height = 24;
+            this.DGV.Size = new System.Drawing.Size(1173, 658);
+            this.DGV.TabIndex = 23;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Teal;
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.txtSearch);
-            this.panel1.Controls.Add(this.ExportButton);
             this.panel1.Controls.Add(this.AddButton);
             this.panel1.Controls.Add(this.DeleteButton);
             this.panel1.Controls.Add(this.EditButton);
@@ -53,7 +63,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(191, 658);
-            this.panel1.TabIndex = 20;
+            this.panel1.TabIndex = 22;
             // 
             // btnSearch
             // 
@@ -62,7 +72,7 @@
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSearch.Location = new System.Drawing.Point(0, 210);
+            this.btnSearch.Location = new System.Drawing.Point(0, 163);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Padding = new System.Windows.Forms.Padding(3);
             this.btnSearch.Size = new System.Drawing.Size(191, 47);
@@ -74,26 +84,10 @@
             // txtSearch
             // 
             this.txtSearch.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtSearch.Location = new System.Drawing.Point(0, 188);
+            this.txtSearch.Location = new System.Drawing.Point(0, 141);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(191, 22);
             this.txtSearch.TabIndex = 15;
-            // 
-            // ExportButton
-            // 
-            this.ExportButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ExportButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ExportButton.FlatAppearance.BorderSize = 0;
-            this.ExportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExportButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ExportButton.Location = new System.Drawing.Point(0, 141);
-            this.ExportButton.Name = "ExportButton";
-            this.ExportButton.Padding = new System.Windows.Forms.Padding(3);
-            this.ExportButton.Size = new System.Drawing.Size(191, 47);
-            this.ExportButton.TabIndex = 11;
-            this.ExportButton.Text = "Экспорт данных";
-            this.ExportButton.UseVisualStyleBackColor = false;
-            this.ExportButton.Click += new System.EventHandler(this.ExportButton_Click);
             // 
             // AddButton
             // 
@@ -143,45 +137,32 @@
             this.EditButton.UseVisualStyleBackColor = false;
             this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
-            // DGV
-            // 
-            this.DGV.AllowUserToAddRows = false;
-            this.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DGV.Location = new System.Drawing.Point(191, 0);
-            this.DGV.Name = "DGV";
-            this.DGV.RowHeadersWidth = 51;
-            this.DGV.RowTemplate.Height = 24;
-            this.DGV.Size = new System.Drawing.Size(1173, 658);
-            this.DGV.TabIndex = 21;
-            // 
-            // UsersForm
+            // OrdersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1364, 658);
             this.Controls.Add(this.DGV);
             this.Controls.Add(this.panel1);
-            this.Location = new System.Drawing.Point(1382, 705);
             this.MaximumSize = new System.Drawing.Size(1382, 705);
-            this.Name = "UsersForm";
-            this.Text = "UsersForm";
+            this.MinimumSize = new System.Drawing.Size(1382, 705);
+            this.Name = "OrdersForm";
+            this.Text = "OrdersForm";
+            ((System.ComponentModel.ISupportInitialize)(this.DGV)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private System.Windows.Forms.DataGridView DGV;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Button ExportButton;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Button EditButton;
-        private System.Windows.Forms.DataGridView DGV;
     }
 }

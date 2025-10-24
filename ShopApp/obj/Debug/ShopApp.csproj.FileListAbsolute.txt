@@ -25,4 +25,11 @@ D:\GitHub\ShopApp\obj\Debug\ShopApp.exe
 D:\GitHub\ShopApp\obj\Debug\ShopApp.pdb
 D:\GitHub\ShopApp\obj\Debug\ShopApp.CreateOrderForm.resources
 D:\GitHub\ShopApp\obj\Debug\ShopApp.AdminForm.resources
-D:\GitHub\ShopApp\obj\Debug\ShopApp.UsersForm.resources
+D:\GitHub\ShopApp\obj\Debug\ShopApp.EditForms.UserEditForm.resources
+D:\GitHub\ShopApp\obj\Debug\ShopApp.Forms.OrdersForm.resources
+D:\GitHub\ShopApp\obj\Debug\ShopApp.Forms.ProductsForm.resources
+D:\GitHub\ShopApp\obj\Debug\ShopApp.Forms.UsersForm.resources
+D:\GitHub\ShopApp\obj\Debug\ShopApp.EditForms.ProductEditForm.resources
+D:\GitHub\ShopApp\obj\Debug\ShopApp.EditForms.OrderEditForm.resources
+D:\GitHub\ShopApp\obj\Debug\ShopApp.ProductDetailForm.resources
+D:\GitHub\ShopApp\obj\Debug\ShopApp.BasketForm.resources
