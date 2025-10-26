@@ -82,10 +82,12 @@ namespace ShopApp
         private void LoginBtn_Click(object sender, EventArgs e)
         {
             SqlConnection connection = new SqlConnection(Globals.connectionString);
-            string Insertq = "INSERT INTO dbo.[User] ([Login], [password], [id_Role]) VALUES (@Login, @password, @id_Role)";
-            string Selectq = "Select COUNT(id_user) FROM dbo.[User] Where [login] = @login";
+            string Insertq = "INSERT INTO dbo.[User] ([Login], [password], [id_Role]) VALUES (@Login, @password, @id_Role); SELECT SCOPE_IDENTITY();" ;
+            string InsertqB = "INSERT INTO Basket (id_user) VALUES (@id_user)";
+            string Selectq = "SELECT COUNT(id_user) FROM dbo.[User] Where [login] = @login";
             SqlCommand Icmd = new SqlCommand(Insertq, connection);
             SqlCommand Scmd = new SqlCommand(Selectq, connection);
+            SqlCommand IBcmd = new SqlCommand(InsertqB, connection);
             connection.Open();
             Scmd.Parameters.Add("@login", LogintextBox.Text);
             if (int.Parse(Scmd.ExecuteScalar().ToString()) > 0)
@@ -122,8 +124,9 @@ namespace ShopApp
                 Icmd.Parameters.Add("@Login", LogintextBox.Text);
                 Icmd.Parameters.Add("@password", PasswordtextBox.Text);
                 Icmd.Parameters.Add("@id_Role", 1);
-                Icmd.ExecuteNonQuery();
-
+                int id_user = int.Parse(Icmd.ExecuteScalar().ToString());
+                IBcmd.Parameters.Add("@id_user", id_user);
+                IBcmd.ExecuteNonQuery();
                 connection.Close();
                 this.Close();
             }
