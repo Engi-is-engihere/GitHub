@@ -268,16 +268,21 @@ namespace ShopApp
                 }
             }
 
+            // Clear all controls first
             ProductPanel.Controls.Clear();
+            
+            // Add all filtered groups back with proper visibility
             foreach (var gb in filteredGroups)
             {
-                gb.Visible = true; 
+                gb.Visible = true;
                 ProductPanel.Controls.Add(gb);
             }
 
+            // Add remaining groups but make them invisible
             foreach (var gb in allGroups.Except(filteredGroups))
             {
                 gb.Visible = false;
+                ProductPanel.Controls.Add(gb);  // Add back to controls to maintain references
             }
         }
 

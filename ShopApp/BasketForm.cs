@@ -97,6 +97,13 @@ namespace ShopApp
 
         private async void buttonCreateOrder_Click(object sender, EventArgs e)
         {
+            // Validate address input
+            if (string.IsNullOrWhiteSpace(AdresstextBox.Text))
+            {
+                MessageBox.Show("Введите адрес доставки!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            
             int orderId;
             using (SqlConnection conn = new SqlConnection(Globals.connectionString))
             {

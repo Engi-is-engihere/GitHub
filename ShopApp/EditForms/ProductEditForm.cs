@@ -23,11 +23,11 @@ namespace ShopApp.EditForms
             if (productId > 0)
             {
                 LoadProductData();
-                this.Text = "Редактировать пользователя";
+                this.Text = "Редактировать товар";
             }
             else
             {
-                this.Text = "Добавить пользователя";
+                this.Text = "Добавить товар";
             }
 
         }
@@ -173,9 +173,13 @@ namespace ShopApp.EditForms
                     else
                     {
                         cmd.ExecuteNonQuery();
+                        MessageBox.Show("Товар успешно создан!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
+            
+            this.DialogResult = DialogResult.OK;
+            this.Close();
 
         }
 

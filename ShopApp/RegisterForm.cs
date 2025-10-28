@@ -117,7 +117,7 @@ namespace ShopApp
                 PasswordtextBox2.BorderStyle = BorderStyle.None;
                 g.DrawRectangle(RedPen, new Rectangle(PasswordtextBox2.Location.X - variance, PasswordtextBox2.Location.Y - variance, PasswordtextBox2.Width + variance, PasswordtextBox2.Height + variance));
                 PasswordtextBox2.ForeColor = Color.Red;
-                ErrorLabel.Text = "Паролин не совпадают";
+                ErrorLabel.Text = "Пароли не совпадают";
             }
             else
             {

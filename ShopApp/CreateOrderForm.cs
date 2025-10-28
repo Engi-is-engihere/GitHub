@@ -44,6 +44,7 @@ namespace ShopApp
                 cmdZP.ExecuteNonQuery();
 
                 connection.Close();
+                MessageBox.Show("Заказ успешно оформлен!", "Подтверждение заказа", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
             else

@@ -80,6 +80,9 @@ namespace ShopApp
                 PasswordtextBox.BorderStyle = BorderStyle.None;
                 g.DrawRectangle(p, new Rectangle(PasswordtextBox.Location.X - variance, PasswordtextBox.Location.Y - variance, PasswordtextBox.Width + variance, PasswordtextBox.Height + variance));
                 PasswordtextBox.ForeColor = Color.Red;
+                
+                ErrorLabel.Text = "Неверный логин или пароль";
+                
                 connection.Close();
             }
             else
