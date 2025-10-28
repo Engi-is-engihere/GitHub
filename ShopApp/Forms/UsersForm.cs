@@ -69,14 +69,31 @@ namespace ShopApp.Forms
             {
                 using (SqlConnection conn = new SqlConnection(Globals.connectionString))
                 {
-                    string deleteQuery = "DELETE FROM [User] WHERE id_user = @id_user";
-                    SqlCommand cmd = new SqlCommand(deleteQuery, conn);
-                    cmd.Parameters.AddWithValue("@id_user", id);
+                    string deleteQueryB = "DELETE FROM [Basket] WHERE id_user = @id_user";
+                    string deleteQueryU = "DELETE FROM [User] WHERE id_user = @id_user";
+
+                    SqlCommand cmdB = new SqlCommand(deleteQueryB, conn);
+                    SqlCommand cmdU = new SqlCommand(deleteQueryU, conn);
+
+                    cmdB.Parameters.AddWithValue("@id_user", id);
                     try
                     {
                         conn.Open();
-                        cmd.ExecuteNonQuery();
+                        cmdB.ExecuteNonQuery();
                         LoadData();
+                        conn.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка удаления: " + ex.Message);
+                    }
+                    cmdU.Parameters.AddWithValue("@id_user", id);
+                    try
+                    {
+                        conn.Open();
+                        cmdU.ExecuteNonQuery();
+                        LoadData();
+                        conn.Close ();
                     }
                     catch (Exception ex)
                     {
