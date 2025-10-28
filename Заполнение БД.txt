@@ -1,0 +1,37 @@
+-- Вставка сотрудников
+INSERT INTO [dbo].[employees] (full_name, position, driver_license_category, hire_date, phone, login, password)
+VALUES
+('Иванов Иван Иванович', 'начальник отдела', NULL, '2015-06-01', '79161234567', 'ivanov', 'pass123'),
+('Петров Петр Петрович', 'диспетчер', NULL, '2018-03-15', '79261234567', 'petrov', 'pass123'),
+('Сидоров Сидор Сидорович', 'механик', 'B', '2017-09-10', '79361234567', 'sidorov', 'pass123'),
+('Кузнецова Мария Ивановна', 'оператор', NULL, '2020-01-20', '79461234567', 'kuznetsova', 'pass123');
+
+-- Вставка типов оборудования
+INSERT INTO [dbo].[equipment_types] (type_name, category, maintenance_interval_days)
+VALUES
+('Грузовой автомобиль', 'транспортная', 30),
+('Экскаватор', 'землеройная', 45),
+('Подъемник', 'грузоподъемная', 60),
+('Лебедка', 'специальная', 90);
+
+-- Вставка оборудования
+INSERT INTO [dbo].[equipment] (type_id, model, serial_number, purchase_date, status, last_maintenance_date)
+VALUES
+(1, 'KAMAZ 5320', 'SN123456', '2019-05-20', 'активна', '2023-10-01'),
+(2, 'Hitachi ZX210', 'SN654321', '2018-08-15', 'в ремонте', '2023-09-20'),
+(3, 'JLG 860SJ', 'SN789012', '2020-02-10', 'резерв', NULL),
+(4, 'Liebherr LTM 1030', 'SN345678', '2017-11-05', 'списана', '2022-12-15');
+
+-- Вставка записей обслуживания
+INSERT INTO [dbo].[maintenance_records] (equipment_id, mechanic_id, maintenance_date, maintenance_type, cost, description)
+VALUES
+(1, 3, '2023-10-01', 'квартальное', 1500.00, 'Проведена плановая техоснастка'),
+(2, 3, '2023-09-20', 'внеплановое', 3000.00, 'Замена гидравлической системы'),
+(4, 3, '2022-12-15', 'ежегодное', 5000.00, 'Обслуживание подъемника');
+
+-- Вставка работ по заданиям
+INSERT INTO [dbo].[work_assignments] (equipment_id, operator_id, project_name, start_date, end_date, work_hours, assignment_status)
+VALUES
+(1, 4, 'Доставка груза', '2023-10-05 08:00', '2023-10-05 17:00', 9, 'завершено'),
+(2, 3, 'Ремонт экскаватора', '2023-10-10 09:00', NULL, NULL, 'активно'),
+(3, 4, 'Обслуживание подъёмника', '2023-10-12 10:00', '2023-10-12 15:00', 5, 'завершено');

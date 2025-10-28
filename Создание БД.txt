@@ -1,0 +1,161 @@
+USE [Buildres]
+GO
+/****** Object:  Table [dbo].[employees]    Script Date: 26.10.2025 23:00:43 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[employees](
+	[employee_id] [int] IDENTITY(1,1) NOT NULL,
+	[full_name] [varchar](100) NOT NULL,
+	[position] [varchar](50) NOT NULL,
+	[driver_license_category] [varchar](10) NULL,
+	[hire_date] [date] NOT NULL,
+	[phone] [varchar](20) NULL,
+	[login] [varchar](30) NULL,
+	[password] [varchar](30) NULL,
+ CONSTRAINT [PK__employee__C52E0BA82DD13C58] PRIMARY KEY CLUSTERED 
+(
+	[employee_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+ CONSTRAINT [UQ__employee__B43B145F9D77067D] UNIQUE NONCLUSTERED 
+(
+	[phone] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[equipment]    Script Date: 26.10.2025 23:00:43 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[equipment](
+	[equipment_id] [int] IDENTITY(1,1) NOT NULL,
+	[type_id] [int] NOT NULL,
+	[model] [varchar](100) NOT NULL,
+	[serial_number] [varchar](50) NOT NULL,
+	[purchase_date] [date] NOT NULL,
+	[status] [varchar](20) NOT NULL,
+	[last_maintenance_date] [date] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[equipment_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[serial_number] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[equipment_types]    Script Date: 26.10.2025 23:00:43 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[equipment_types](
+	[type_id] [int] IDENTITY(1,1) NOT NULL,
+	[type_name] [varchar](50) NOT NULL,
+	[category] [varchar](30) NOT NULL,
+	[maintenance_interval_days] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[type_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[type_name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[maintenance_records]    Script Date: 26.10.2025 23:00:43 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[maintenance_records](
+	[record_id] [int] IDENTITY(1,1) NOT NULL,
+	[equipment_id] [int] NOT NULL,
+	[mechanic_id] [int] NOT NULL,
+	[maintenance_date] [date] NOT NULL,
+	[maintenance_type] [varchar](30) NOT NULL,
+	[cost] [decimal](10, 2) NULL,
+	[description] [text] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[record_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[work_assignments]    Script Date: 26.10.2025 23:00:43 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[work_assignments](
+	[assignment_id] [int] IDENTITY(1,1) NOT NULL,
+	[equipment_id] [int] NOT NULL,
+	[operator_id] [int] NOT NULL,
+	[project_name] [varchar](100) NOT NULL,
+	[start_date] [datetime] NOT NULL,
+	[end_date] [datetime] NULL,
+	[work_hours] [int] NULL,
+	[assignment_status] [varchar](20) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[assignment_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[equipment]  WITH CHECK ADD FOREIGN KEY([type_id])
+REFERENCES [dbo].[equipment_types] ([type_id])
+GO
+ALTER TABLE [dbo].[maintenance_records]  WITH CHECK ADD FOREIGN KEY([equipment_id])
+REFERENCES [dbo].[equipment] ([equipment_id])
+GO
+ALTER TABLE [dbo].[maintenance_records]  WITH CHECK ADD  CONSTRAINT [FK__maintenan__mecha__4BAC3F29] FOREIGN KEY([mechanic_id])
+REFERENCES [dbo].[employees] ([employee_id])
+GO
+ALTER TABLE [dbo].[maintenance_records] CHECK CONSTRAINT [FK__maintenan__mecha__4BAC3F29]
+GO
+ALTER TABLE [dbo].[work_assignments]  WITH CHECK ADD FOREIGN KEY([equipment_id])
+REFERENCES [dbo].[equipment] ([equipment_id])
+GO
+ALTER TABLE [dbo].[work_assignments]  WITH CHECK ADD  CONSTRAINT [FK__work_assi__opera__45F365D3] FOREIGN KEY([operator_id])
+REFERENCES [dbo].[employees] ([employee_id])
+GO
+ALTER TABLE [dbo].[work_assignments] CHECK CONSTRAINT [FK__work_assi__opera__45F365D3]
+GO
+ALTER TABLE [dbo].[employees]  WITH CHECK ADD  CONSTRAINT [chk_hire_date] CHECK  (([hire_date]<=getdate()))
+GO
+ALTER TABLE [dbo].[employees] CHECK CONSTRAINT [chk_hire_date]
+GO
+ALTER TABLE [dbo].[employees]  WITH CHECK ADD  CONSTRAINT [CK__employees__posit__4222D4EF] CHECK  (([position]='начальник отдела' OR [position]='диспетчер' OR [position]='механик' OR [position]='оператор'))
+GO
+ALTER TABLE [dbo].[employees] CHECK CONSTRAINT [CK__employees__posit__4222D4EF]
+GO
+ALTER TABLE [dbo].[equipment]  WITH CHECK ADD  CONSTRAINT [chk_purchase_date] CHECK  (([purchase_date]>=dateadd(year,(-50),getdate())))
+GO
+ALTER TABLE [dbo].[equipment] CHECK CONSTRAINT [chk_purchase_date]
+GO
+ALTER TABLE [dbo].[equipment]  WITH CHECK ADD CHECK  (([status]='резерв' OR [status]='списана' OR [status]='в ремонте' OR [status]='активна'))
+GO
+ALTER TABLE [dbo].[equipment_types]  WITH CHECK ADD CHECK  (([category]='специальная' OR [category]='дорожная' OR [category]='транспортная' OR [category]='грузоподъемная' OR [category]='землеройная'))
+GO
+ALTER TABLE [dbo].[equipment_types]  WITH CHECK ADD CHECK  (([maintenance_interval_days]>(0)))
+GO
+ALTER TABLE [dbo].[maintenance_records]  WITH CHECK ADD  CONSTRAINT [chk_maintenance_date] CHECK  (([maintenance_date]<=getdate()))
+GO
+ALTER TABLE [dbo].[maintenance_records] CHECK CONSTRAINT [chk_maintenance_date]
+GO
+ALTER TABLE [dbo].[maintenance_records]  WITH CHECK ADD CHECK  (([maintenance_type]='внеплановое' OR [maintenance_type]='квартальное' OR [maintenance_type]='ежемесячное' OR [maintenance_type]='еженедельное' OR [maintenance_type]='ежедневное'))
+GO
+ALTER TABLE [dbo].[maintenance_records]  WITH CHECK ADD CHECK  (([cost]>=(0)))
+GO
+ALTER TABLE [dbo].[work_assignments]  WITH CHECK ADD  CONSTRAINT [chk_dates] CHECK  (([end_date] IS NULL OR [end_date]>[start_date]))
+GO
+ALTER TABLE [dbo].[work_assignments] CHECK CONSTRAINT [chk_dates]
+GO
+ALTER TABLE [dbo].[work_assignments]  WITH CHECK ADD CHECK  (([assignment_status]='отменено' OR [assignment_status]='завершено' OR [assignment_status]='активно'))
+GO
+ALTER TABLE [dbo].[work_assignments]  WITH CHECK ADD CHECK  (([work_hours]>(0)))
+GO
