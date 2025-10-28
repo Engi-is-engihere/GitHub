@@ -121,4 +121,7 @@
   <data name="Computer_nerd_1536x1054" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Computer-nerd-1536x1054.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="NOPHOTO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NOPHOTO.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

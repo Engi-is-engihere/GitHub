@@ -32,6 +32,39 @@ namespace ShopApp.EditForms
 
         }
 
+        private Image LoadDefaultImage()
+        {
+            try
+            {
+                // Try to load NOPHOTO from resources
+                return Properties.Resources.NOPHOTO;
+            }
+            catch
+            {
+                // If NOPHOTO fails, try to load from file
+                try
+                {
+                    string imagePath = System.IO.Path.Combine(Application.StartupPath, "Resources", "NOPHOTO.jpg");
+                    if (System.IO.File.Exists(imagePath))
+                    {
+                        return Image.FromFile(imagePath);
+                    }
+                }
+                catch
+                {
+                    // If all else fails, create a simple placeholder
+                    Bitmap placeholder = new Bitmap(180, 120);
+                    using (Graphics g = Graphics.FromImage(placeholder))
+                    {
+                        g.Clear(Color.LightGray);
+                        g.DrawString("No Photo", new Font("Arial", 12), Brushes.Black, 50, 50);
+                    }
+                    return placeholder;
+                }
+            }
+            return null;
+        }
+
         private void LoadSizes() {
 
             using (SqlConnection conn = new SqlConnection(Globals.connectionString))
@@ -106,7 +139,7 @@ namespace ShopApp.EditForms
                         }
                         else
                         {
-                            ProductpictureBox.Image = Properties.Resources.Computer_nerd_1536x1054;
+                            ProductpictureBox.Image = LoadDefaultImage();
                         }
                     }
                     catch (Exception ex)

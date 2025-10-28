@@ -200,6 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\Computer-nerd-1536x1054.jpg" />
+    <None Include="Resources\NOPHOTO.jpg" />
     <None Include="Resources\Computer-nerd-1536x1054.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

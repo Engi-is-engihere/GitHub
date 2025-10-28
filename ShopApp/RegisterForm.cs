@@ -82,7 +82,7 @@ namespace ShopApp
         private void LoginBtn_Click(object sender, EventArgs e)
         {
             SqlConnection connection = new SqlConnection(Globals.connectionString);
-            string Insertq = "INSERT INTO dbo.[User] ([Login], [password], [id_Role]) VALUES (@Login, @password, @id_Role); SELECT SCOPE_IDENTITY();" ;
+            string Insertq = "INSERT INTO dbo.[User] ([Login], [password], [id_Role]) VALUES (@Login, @password, @id_Role); SELECT SCOPE_IDENTITY();";
             string InsertqB = "INSERT INTO Basket (id_user) VALUES (@id_user)";
             string Selectq = "SELECT COUNT(id_user) FROM dbo.[User] Where [login] = @login";
             SqlCommand Icmd = new SqlCommand(Insertq, connection);
@@ -90,45 +90,53 @@ namespace ShopApp
             SqlCommand IBcmd = new SqlCommand(InsertqB, connection);
             connection.Open();
             Scmd.Parameters.Add("@login", LogintextBox.Text);
-            if (int.Parse(Scmd.ExecuteScalar().ToString()) > 0)
+            if (PasswordtextBox.Text.Length >= 8)
             {
-                connection.Close();
 
-                Graphics g = this.CreateGraphics();
-                LogintextBox.BorderStyle = BorderStyle.None;
-                g.DrawRectangle(RedPen, new Rectangle(LogintextBox.Location.X - variance, LogintextBox.Location.Y - variance, LogintextBox.Width + variance, LogintextBox.Height + variance));
-                LogintextBox.ForeColor = Color.Red;
-                ErrorLabel.Text = "Логин занят";
 
+                if (int.Parse(Scmd.ExecuteScalar().ToString()) > 0)
+                {
+                    connection.Close();
+
+                    Graphics g = this.CreateGraphics();
+                    LogintextBox.BorderStyle = BorderStyle.None;
+                    g.DrawRectangle(RedPen, new Rectangle(LogintextBox.Location.X - variance, LogintextBox.Location.Y - variance, LogintextBox.Width + variance, LogintextBox.Height + variance));
+                    LogintextBox.ForeColor = Color.Red;
+                    ErrorLabel.Text = "Логин занят";
+
+                }
+                else if (PasswordtextBox.Text != PasswordtextBox2.Text)
+                {
+                    connection.Close();
+
+                    Graphics g = this.CreateGraphics();
+                    LogintextBox.BorderStyle = BorderStyle.None;
+                    g.DrawRectangle(GrayPen, new Rectangle(LogintextBox.Location.X - variance, LogintextBox.Location.Y - variance, LogintextBox.Width + variance, LogintextBox.Height + variance));
+                    LogintextBox.ForeColor = Color.Gray;
+
+                    PasswordtextBox.BorderStyle = BorderStyle.None;
+                    g.DrawRectangle(RedPen, new Rectangle(PasswordtextBox.Location.X - variance, PasswordtextBox.Location.Y - variance, PasswordtextBox.Width + variance, PasswordtextBox.Height + variance));
+                    PasswordtextBox.ForeColor = Color.Red;
+
+                    PasswordtextBox2.BorderStyle = BorderStyle.None;
+                    g.DrawRectangle(RedPen, new Rectangle(PasswordtextBox2.Location.X - variance, PasswordtextBox2.Location.Y - variance, PasswordtextBox2.Width + variance, PasswordtextBox2.Height + variance));
+                    PasswordtextBox2.ForeColor = Color.Red;
+                    ErrorLabel.Text = "Пароли не совпадают";
+                }
+                else
+                {
+                    Icmd.Parameters.Add("@Login", LogintextBox.Text);
+                    Icmd.Parameters.Add("@password", PasswordtextBox.Text);
+                    Icmd.Parameters.Add("@id_Role", 1);
+                    int id_user = int.Parse(Icmd.ExecuteScalar().ToString());
+                    IBcmd.Parameters.Add("@id_user", id_user);
+                    IBcmd.ExecuteNonQuery();
+                    connection.Close();
+                    this.Close();
+                }
             }
-            else if (PasswordtextBox.Text != PasswordtextBox2.Text)
-            {
-                connection.Close();
-
-                Graphics g = this.CreateGraphics();
-                LogintextBox.BorderStyle = BorderStyle.None;
-                g.DrawRectangle(GrayPen, new Rectangle(LogintextBox.Location.X - variance, LogintextBox.Location.Y - variance, LogintextBox.Width + variance, LogintextBox.Height + variance));
-                LogintextBox.ForeColor = Color.Gray;
-
-                PasswordtextBox.BorderStyle = BorderStyle.None;
-                g.DrawRectangle(RedPen, new Rectangle(PasswordtextBox.Location.X - variance, PasswordtextBox.Location.Y - variance, PasswordtextBox.Width + variance, PasswordtextBox.Height + variance));
-                PasswordtextBox.ForeColor = Color.Red;
-
-                PasswordtextBox2.BorderStyle = BorderStyle.None;
-                g.DrawRectangle(RedPen, new Rectangle(PasswordtextBox2.Location.X - variance, PasswordtextBox2.Location.Y - variance, PasswordtextBox2.Width + variance, PasswordtextBox2.Height + variance));
-                PasswordtextBox2.ForeColor = Color.Red;
-                ErrorLabel.Text = "Пароли не совпадают";
-            }
-            else
-            {
-                Icmd.Parameters.Add("@Login", LogintextBox.Text);
-                Icmd.Parameters.Add("@password", PasswordtextBox.Text);
-                Icmd.Parameters.Add("@id_Role", 1);
-                int id_user = int.Parse(Icmd.ExecuteScalar().ToString());
-                IBcmd.Parameters.Add("@id_user", id_user);
-                IBcmd.ExecuteNonQuery();
-                connection.Close();
-                this.Close();
+            else {
+                ErrorLabel.Text = "Минимальная длина пароля 8 символов";
             }
         }
 

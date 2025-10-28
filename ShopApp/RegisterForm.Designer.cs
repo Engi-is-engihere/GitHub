@@ -90,7 +90,7 @@
             // 
             // LogintextBox
             // 
-            this.LogintextBox.Cursor = System.Windows.Forms.Cursors.No;
+            this.LogintextBox.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.LogintextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LogintextBox.Location = new System.Drawing.Point(206, 184);
             this.LogintextBox.Name = "LogintextBox";

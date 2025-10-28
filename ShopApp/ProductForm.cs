@@ -19,6 +19,39 @@ namespace ShopApp
             UpdateProduct();
         }
 
+        private Image LoadDefaultImage()
+        {
+            try
+            {
+                // Try to load NOPHOTO from resources
+                return Properties.Resources.NOPHOTO;
+            }
+            catch
+            {
+                // If NOPHOTO fails, try to load from file
+                try
+                {
+                    string imagePath = System.IO.Path.Combine(Application.StartupPath, "Resources", "NOPHOTO.jpg");
+                    if (System.IO.File.Exists(imagePath))
+                    {
+                        return Image.FromFile(imagePath);
+                    }
+                }
+                catch
+                {
+                    // If all else fails, create a simple placeholder
+                    Bitmap placeholder = new Bitmap(180, 120);
+                    using (Graphics g = Graphics.FromImage(placeholder))
+                    {
+                        g.Clear(Color.LightGray);
+                        g.DrawString("No Photo", new Font("Arial", 12), Brushes.Black, 50, 50);
+                    }
+                    return placeholder;
+                }
+            }
+            return null;
+        }
+
         public void UpdateProduct()
         {
             using (SqlConnection connection = new SqlConnection(Globals.connectionString))
@@ -55,7 +88,7 @@ namespace ShopApp
 
                         PictureBox pictureBox = new PictureBox
                         {
-                            Image = productImage ?? Properties.Resources.Computer_nerd_1536x1054,
+                            Image = productImage ?? LoadDefaultImage(),
                             SizeMode = PictureBoxSizeMode.Zoom,
                             Width = 180,
                             Height = 120,

@@ -69,5 +69,13 @@ namespace ShopApp.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        internal static System.Drawing.Bitmap NOPHOTO
+        {
+            
+            get {
+                object obj = ResourceManager.GetObject("NOPHOTO", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
