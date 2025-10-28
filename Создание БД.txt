@@ -1,65 +1,96 @@
-USE [Buildres]
+USE [OnlineClothingStore]
 GO
-/****** Object:  Table [dbo].[employees]    Script Date: 26.10.2025 23:00:43 ******/
+/****** Object:  Table [dbo].[Basket]    Script Date: 28.10.2025 22:42:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[employees](
-	[employee_id] [int] IDENTITY(1,1) NOT NULL,
-	[full_name] [varchar](100) NOT NULL,
-	[position] [varchar](50) NOT NULL,
-	[driver_license_category] [varchar](10) NULL,
-	[hire_date] [date] NOT NULL,
-	[phone] [varchar](20) NULL,
-	[login] [varchar](30) NULL,
-	[password] [varchar](30) NULL,
- CONSTRAINT [PK__employee__C52E0BA82DD13C58] PRIMARY KEY CLUSTERED 
+CREATE TABLE [dbo].[Basket](
+	[id_basket] [int] IDENTITY(1,1) NOT NULL,
+	[id_user] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
 (
-	[employee_id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
- CONSTRAINT [UQ__employee__B43B145F9D77067D] UNIQUE NONCLUSTERED 
-(
-	[phone] ASC
+	[id_basket] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[equipment]    Script Date: 26.10.2025 23:00:43 ******/
+/****** Object:  Table [dbo].[Product]    Script Date: 28.10.2025 22:42:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[equipment](
-	[equipment_id] [int] IDENTITY(1,1) NOT NULL,
-	[type_id] [int] NOT NULL,
-	[model] [varchar](100) NOT NULL,
-	[serial_number] [varchar](50) NOT NULL,
-	[purchase_date] [date] NOT NULL,
-	[status] [varchar](20) NOT NULL,
-	[last_maintenance_date] [date] NULL,
+CREATE TABLE [dbo].[Product](
+	[id_product] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](100) NOT NULL,
+	[Price] [decimal](10, 2) NOT NULL,
+	[id_Size_Product] [int] NOT NULL,
+	[id_ProductType] [int] NOT NULL,
+	[description] [nvarchar](500) NULL,
+	[Photo] [varbinary](max) NULL,
 PRIMARY KEY CLUSTERED 
 (
-	[equipment_id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
-UNIQUE NONCLUSTERED 
+	[id_product] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Product_Basket]    Script Date: 28.10.2025 22:42:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Product_Basket](
+	[id_Product_Basket] [int] IDENTITY(1,1) NOT NULL,
+	[id_product] [int] NOT NULL,
+	[id_basket] [int] NOT NULL,
+	[count] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
 (
-	[serial_number] ASC
+	[id_Product_Basket] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[equipment_types]    Script Date: 26.10.2025 23:00:43 ******/
+/****** Object:  Table [dbo].[Product_Review]    Script Date: 28.10.2025 22:42:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[equipment_types](
-	[type_id] [int] IDENTITY(1,1) NOT NULL,
-	[type_name] [varchar](50) NOT NULL,
-	[category] [varchar](30) NOT NULL,
-	[maintenance_interval_days] [int] NOT NULL,
+CREATE TABLE [dbo].[Product_Review](
+	[id_Product_Review] [int] IDENTITY(1,1) NOT NULL,
+	[id_product] [int] NOT NULL,
+	[id_review] [int] NOT NULL,
 PRIMARY KEY CLUSTERED 
 (
-	[type_id] ASC
+	[id_Product_Review] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Product_Zakaz]    Script Date: 28.10.2025 22:42:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Product_Zakaz](
+	[id_Product_Zakaz] [int] IDENTITY(1,1) NOT NULL,
+	[id_product] [int] NOT NULL,
+	[id_zakaz] [int] NOT NULL,
+	[quantity] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_Product_Zakaz] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[ProductType]    Script Date: 28.10.2025 22:42:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ProductType](
+	[id_ProductType] [int] IDENTITY(1,1) NOT NULL,
+	[type_name] [nvarchar](50) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_ProductType] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
 UNIQUE NONCLUSTERED 
 (
@@ -67,95 +98,160 @@ UNIQUE NONCLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[maintenance_records]    Script Date: 26.10.2025 23:00:43 ******/
+/****** Object:  Table [dbo].[Review]    Script Date: 28.10.2025 22:42:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[maintenance_records](
-	[record_id] [int] IDENTITY(1,1) NOT NULL,
-	[equipment_id] [int] NOT NULL,
-	[mechanic_id] [int] NOT NULL,
-	[maintenance_date] [date] NOT NULL,
-	[maintenance_type] [varchar](30) NOT NULL,
-	[cost] [decimal](10, 2) NULL,
-	[description] [text] NULL,
+CREATE TABLE [dbo].[Review](
+	[id_review] [int] IDENTITY(1,1) NOT NULL,
+	[rating] [int] NOT NULL,
+	[description] [nvarchar](500) NULL,
 PRIMARY KEY CLUSTERED 
 (
-	[record_id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[work_assignments]    Script Date: 26.10.2025 23:00:43 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[work_assignments](
-	[assignment_id] [int] IDENTITY(1,1) NOT NULL,
-	[equipment_id] [int] NOT NULL,
-	[operator_id] [int] NOT NULL,
-	[project_name] [varchar](100) NOT NULL,
-	[start_date] [datetime] NOT NULL,
-	[end_date] [datetime] NULL,
-	[work_hours] [int] NULL,
-	[assignment_status] [varchar](20) NOT NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[assignment_id] ASC
+	[id_review] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[equipment]  WITH CHECK ADD FOREIGN KEY([type_id])
-REFERENCES [dbo].[equipment_types] ([type_id])
+/****** Object:  Table [dbo].[Roles]    Script Date: 28.10.2025 22:42:01 ******/
+SET ANSI_NULLS ON
 GO
-ALTER TABLE [dbo].[maintenance_records]  WITH CHECK ADD FOREIGN KEY([equipment_id])
-REFERENCES [dbo].[equipment] ([equipment_id])
+SET QUOTED_IDENTIFIER ON
 GO
-ALTER TABLE [dbo].[maintenance_records]  WITH CHECK ADD  CONSTRAINT [FK__maintenan__mecha__4BAC3F29] FOREIGN KEY([mechanic_id])
-REFERENCES [dbo].[employees] ([employee_id])
+CREATE TABLE [dbo].[Roles](
+	[id_Role] [int] IDENTITY(1,1) NOT NULL,
+	[RoleName] [nvarchar](20) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_Role] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[RoleName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[maintenance_records] CHECK CONSTRAINT [FK__maintenan__mecha__4BAC3F29]
+/****** Object:  Table [dbo].[Size_Product]    Script Date: 28.10.2025 22:42:01 ******/
+SET ANSI_NULLS ON
 GO
-ALTER TABLE [dbo].[work_assignments]  WITH CHECK ADD FOREIGN KEY([equipment_id])
-REFERENCES [dbo].[equipment] ([equipment_id])
+SET QUOTED_IDENTIFIER ON
 GO
-ALTER TABLE [dbo].[work_assignments]  WITH CHECK ADD  CONSTRAINT [FK__work_assi__opera__45F365D3] FOREIGN KEY([operator_id])
-REFERENCES [dbo].[employees] ([employee_id])
+CREATE TABLE [dbo].[Size_Product](
+	[id_Size_Product] [int] IDENTITY(1,1) NOT NULL,
+	[size_name] [nvarchar](10) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_Size_Product] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[size_name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[work_assignments] CHECK CONSTRAINT [FK__work_assi__opera__45F365D3]
+/****** Object:  Table [dbo].[User]    Script Date: 28.10.2025 22:42:01 ******/
+SET ANSI_NULLS ON
 GO
-ALTER TABLE [dbo].[employees]  WITH CHECK ADD  CONSTRAINT [chk_hire_date] CHECK  (([hire_date]<=getdate()))
+SET QUOTED_IDENTIFIER ON
 GO
-ALTER TABLE [dbo].[employees] CHECK CONSTRAINT [chk_hire_date]
+CREATE TABLE [dbo].[User](
+	[id_user] [int] IDENTITY(1,1) NOT NULL,
+	[Login] [nvarchar](50) NOT NULL,
+	[password] [nvarchar](255) NOT NULL,
+	[id_Role] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_user] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[Login] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[employees]  WITH CHECK ADD  CONSTRAINT [CK__employees__posit__4222D4EF] CHECK  (([position]='начальник отдела' OR [position]='диспетчер' OR [position]='механик' OR [position]='оператор'))
+/****** Object:  Table [dbo].[Zakaz]    Script Date: 28.10.2025 22:42:01 ******/
+SET ANSI_NULLS ON
 GO
-ALTER TABLE [dbo].[employees] CHECK CONSTRAINT [CK__employees__posit__4222D4EF]
+SET QUOTED_IDENTIFIER ON
 GO
-ALTER TABLE [dbo].[equipment]  WITH CHECK ADD  CONSTRAINT [chk_purchase_date] CHECK  (([purchase_date]>=dateadd(year,(-50),getdate())))
+CREATE TABLE [dbo].[Zakaz](
+	[id_zakaz] [int] IDENTITY(1,1) NOT NULL,
+	[id_user] [int] NOT NULL,
+	[delivery_address] [nvarchar](255) NULL,
+	[order_date] [datetime2](7) NULL,
+	[status] [nvarchar](20) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_zakaz] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[equipment] CHECK CONSTRAINT [chk_purchase_date]
+ALTER TABLE [dbo].[Product_Basket] ADD  DEFAULT ((1)) FOR [count]
 GO
-ALTER TABLE [dbo].[equipment]  WITH CHECK ADD CHECK  (([status]='резерв' OR [status]='списана' OR [status]='в ремонте' OR [status]='активна'))
+ALTER TABLE [dbo].[Zakaz] ADD  DEFAULT (getdate()) FOR [order_date]
 GO
-ALTER TABLE [dbo].[equipment_types]  WITH CHECK ADD CHECK  (([category]='специальная' OR [category]='дорожная' OR [category]='транспортная' OR [category]='грузоподъемная' OR [category]='землеройная'))
+ALTER TABLE [dbo].[Zakaz] ADD  DEFAULT ('отправлены') FOR [status]
 GO
-ALTER TABLE [dbo].[equipment_types]  WITH CHECK ADD CHECK  (([maintenance_interval_days]>(0)))
+ALTER TABLE [dbo].[Basket]  WITH CHECK ADD  CONSTRAINT [FK_Basket_User] FOREIGN KEY([id_user])
+REFERENCES [dbo].[User] ([id_user])
 GO
-ALTER TABLE [dbo].[maintenance_records]  WITH CHECK ADD  CONSTRAINT [chk_maintenance_date] CHECK  (([maintenance_date]<=getdate()))
+ALTER TABLE [dbo].[Basket] CHECK CONSTRAINT [FK_Basket_User]
 GO
-ALTER TABLE [dbo].[maintenance_records] CHECK CONSTRAINT [chk_maintenance_date]
+ALTER TABLE [dbo].[Product]  WITH CHECK ADD  CONSTRAINT [FK_Product_Size] FOREIGN KEY([id_Size_Product])
+REFERENCES [dbo].[Size_Product] ([id_Size_Product])
 GO
-ALTER TABLE [dbo].[maintenance_records]  WITH CHECK ADD CHECK  (([maintenance_type]='внеплановое' OR [maintenance_type]='квартальное' OR [maintenance_type]='ежемесячное' OR [maintenance_type]='еженедельное' OR [maintenance_type]='ежедневное'))
+ALTER TABLE [dbo].[Product] CHECK CONSTRAINT [FK_Product_Size]
 GO
-ALTER TABLE [dbo].[maintenance_records]  WITH CHECK ADD CHECK  (([cost]>=(0)))
+ALTER TABLE [dbo].[Product]  WITH CHECK ADD  CONSTRAINT [FK_Product_Type] FOREIGN KEY([id_ProductType])
+REFERENCES [dbo].[ProductType] ([id_ProductType])
 GO
-ALTER TABLE [dbo].[work_assignments]  WITH CHECK ADD  CONSTRAINT [chk_dates] CHECK  (([end_date] IS NULL OR [end_date]>[start_date]))
+ALTER TABLE [dbo].[Product] CHECK CONSTRAINT [FK_Product_Type]
 GO
-ALTER TABLE [dbo].[work_assignments] CHECK CONSTRAINT [chk_dates]
+ALTER TABLE [dbo].[Product_Basket]  WITH CHECK ADD  CONSTRAINT [FK_ProductBasket_Basket] FOREIGN KEY([id_basket])
+REFERENCES [dbo].[Basket] ([id_basket])
 GO
-ALTER TABLE [dbo].[work_assignments]  WITH CHECK ADD CHECK  (([assignment_status]='отменено' OR [assignment_status]='завершено' OR [assignment_status]='активно'))
+ALTER TABLE [dbo].[Product_Basket] CHECK CONSTRAINT [FK_ProductBasket_Basket]
 GO
-ALTER TABLE [dbo].[work_assignments]  WITH CHECK ADD CHECK  (([work_hours]>(0)))
+ALTER TABLE [dbo].[Product_Basket]  WITH CHECK ADD  CONSTRAINT [FK_ProductBasket_Product] FOREIGN KEY([id_product])
+REFERENCES [dbo].[Product] ([id_product])
+GO
+ALTER TABLE [dbo].[Product_Basket] CHECK CONSTRAINT [FK_ProductBasket_Product]
+GO
+ALTER TABLE [dbo].[Product_Review]  WITH CHECK ADD  CONSTRAINT [FK_ProductReview_Product] FOREIGN KEY([id_product])
+REFERENCES [dbo].[Product] ([id_product])
+GO
+ALTER TABLE [dbo].[Product_Review] CHECK CONSTRAINT [FK_ProductReview_Product]
+GO
+ALTER TABLE [dbo].[Product_Review]  WITH CHECK ADD  CONSTRAINT [FK_ProductReview_Review] FOREIGN KEY([id_review])
+REFERENCES [dbo].[Review] ([id_review])
+GO
+ALTER TABLE [dbo].[Product_Review] CHECK CONSTRAINT [FK_ProductReview_Review]
+GO
+ALTER TABLE [dbo].[Product_Zakaz]  WITH CHECK ADD  CONSTRAINT [FK_ProductZakaz_Product] FOREIGN KEY([id_product])
+REFERENCES [dbo].[Product] ([id_product])
+GO
+ALTER TABLE [dbo].[Product_Zakaz] CHECK CONSTRAINT [FK_ProductZakaz_Product]
+GO
+ALTER TABLE [dbo].[Product_Zakaz]  WITH CHECK ADD  CONSTRAINT [FK_ProductZakaz_Zakaz] FOREIGN KEY([id_zakaz])
+REFERENCES [dbo].[Zakaz] ([id_zakaz])
+GO
+ALTER TABLE [dbo].[Product_Zakaz] CHECK CONSTRAINT [FK_ProductZakaz_Zakaz]
+GO
+ALTER TABLE [dbo].[User]  WITH CHECK ADD  CONSTRAINT [FK_User_Roles] FOREIGN KEY([id_Role])
+REFERENCES [dbo].[Roles] ([id_Role])
+GO
+ALTER TABLE [dbo].[User] CHECK CONSTRAINT [FK_User_Roles]
+GO
+ALTER TABLE [dbo].[Zakaz]  WITH CHECK ADD  CONSTRAINT [FK_Zakaz_User] FOREIGN KEY([id_user])
+REFERENCES [dbo].[User] ([id_user])
+GO
+ALTER TABLE [dbo].[Zakaz] CHECK CONSTRAINT [FK_Zakaz_User]
+GO
+ALTER TABLE [dbo].[Product]  WITH CHECK ADD CHECK  (([Price]>(0)))
+GO
+ALTER TABLE [dbo].[Product_Basket]  WITH CHECK ADD CHECK  (([count]>(0)))
+GO
+ALTER TABLE [dbo].[Product_Zakaz]  WITH CHECK ADD CHECK  (([quantity]>(0)))
+GO
+ALTER TABLE [dbo].[Review]  WITH CHECK ADD CHECK  (([rating]>=(1) AND [rating]<=(5)))
 GO

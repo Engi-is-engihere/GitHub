@@ -1,37 +1,72 @@
--- Вставка сотрудников
-INSERT INTO [dbo].[employees] (full_name, position, driver_license_category, hire_date, phone, login, password)
-VALUES
-('Иванов Иван Иванович', 'начальник отдела', NULL, '2015-06-01', '79161234567', 'ivanov', 'pass123'),
-('Петров Петр Петрович', 'диспетчер', NULL, '2018-03-15', '79261234567', 'petrov', 'pass123'),
-('Сидоров Сидор Сидорович', 'механик', 'B', '2017-09-10', '79361234567', 'sidorov', 'pass123'),
-('Кузнецова Мария Ивановна', 'оператор', NULL, '2020-01-20', '79461234567', 'kuznetsova', 'pass123');
+-- Вставка ролей
+INSERT INTO [dbo].[Roles] ([RoleName]) VALUES 
+('Admin'),
+('Customer');
 
--- Вставка типов оборудования
-INSERT INTO [dbo].[equipment_types] (type_name, category, maintenance_interval_days)
-VALUES
-('Грузовой автомобиль', 'транспортная', 30),
-('Экскаватор', 'землеройная', 45),
-('Подъемник', 'грузоподъемная', 60),
-('Лебедка', 'специальная', 90);
+-- Вставка размеров продуктов
+INSERT INTO [dbo].[Size_Product] ([size_name]) VALUES 
+('XS'),
+('S'),
+('M'),
+('L'),
+('XL');
 
--- Вставка оборудования
-INSERT INTO [dbo].[equipment] (type_id, model, serial_number, purchase_date, status, last_maintenance_date)
-VALUES
-(1, 'KAMAZ 5320', 'SN123456', '2019-05-20', 'активна', '2023-10-01'),
-(2, 'Hitachi ZX210', 'SN654321', '2018-08-15', 'в ремонте', '2023-09-20'),
-(3, 'JLG 860SJ', 'SN789012', '2020-02-10', 'резерв', NULL),
-(4, 'Liebherr LTM 1030', 'SN345678', '2017-11-05', 'списана', '2022-12-15');
+-- Вставка типов продуктов
+INSERT INTO [dbo].[ProductType] ([type_name]) VALUES 
+('T-Shirt'),
+('Jeans'),
+('Jacket'),
+('Shoes');
 
--- Вставка записей обслуживания
-INSERT INTO [dbo].[maintenance_records] (equipment_id, mechanic_id, maintenance_date, maintenance_type, cost, description)
-VALUES
-(1, 3, '2023-10-01', 'квартальное', 1500.00, 'Проведена плановая техоснастка'),
-(2, 3, '2023-09-20', 'внеплановое', 3000.00, 'Замена гидравлической системы'),
-(4, 3, '2022-12-15', 'ежегодное', 5000.00, 'Обслуживание подъемника');
+-- Вставка пользователей
+INSERT INTO [dbo].[User] ([Login], [password], [id_Role]) VALUES 
+('admin', 'admin_password_hash', 1),
+('john_doe', 'password_hash_123', 2),
+('jane_smith', 'password_hash_456', 2);
 
--- Вставка работ по заданиям
-INSERT INTO [dbo].[work_assignments] (equipment_id, operator_id, project_name, start_date, end_date, work_hours, assignment_status)
-VALUES
-(1, 4, 'Доставка груза', '2023-10-05 08:00', '2023-10-05 17:00', 9, 'завершено'),
-(2, 3, 'Ремонт экскаватора', '2023-10-10 09:00', NULL, NULL, 'активно'),
-(3, 4, 'Обслуживание подъёмника', '2023-10-12 10:00', '2023-10-12 15:00', 5, 'завершено');
+-- Вставка товаров
+INSERT INTO [dbo].[Product] ([Name], [Price], [id_Size_Product], [id_ProductType], [description], [Photo]) VALUES 
+('Basic T-Shirt', 19.99, 3, 1, 'White cotton T-Shirt', NULL),
+('Blue Jeans', 49.99, 4, 2, 'Comfortable blue jeans', NULL),
+('Leather Jacket', 129.99, 2, 3, 'Stylish leather jacket', NULL),
+('Running Shoes', 89.99, 4, 4, 'Lightweight running shoes', NULL);
+
+-- Вставка корзин
+INSERT INTO [dbo].[Basket] ([id_user]) VALUES 
+(2),
+(3);
+
+-- Вставка связей товаров и корзин с количеством
+INSERT INTO [dbo].[Product_Basket] ([id_product], [id_basket], [count]) VALUES 
+(1, 1, 2),
+(2, 1, 1),
+(3, 2, 1),
+(4, 2, 2);
+
+-- Вставка отзывов
+INSERT INTO [dbo].[Review] ([rating], [description]) VALUES
+(5, 'Excellent quality!'),
+(4, 'Good value for money.'),
+(3, 'Average product.'),
+(2, 'Not as expected.'),
+(1, 'Very bad experience.');
+
+-- Вставка связей отзывов с товарами
+INSERT INTO [dbo].[Product_Review] ([id_product], [id_review]) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(4, 5);
+
+-- Вставка заказов
+INSERT INTO [dbo].[Zakaz] ([id_user], [delivery_address], [order_date], [status]) VALUES
+(2, '123 Main St, City', DEFAULT, 'Отправлены'),
+(3, '456 Elm St, City', DEFAULT, 'Обрабатывается');
+
+-- Вставка связей товаров и заказов
+INSERT INTO [dbo].[Product_Zakaz] ([id_product], [id_zakaz], [quantity]) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(4, 2, 1),
+(3, 2, 1);
